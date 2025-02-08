@@ -12,6 +12,10 @@ namespace FileEncryptorApp
 {
     public partial class MainWindow : Window
     {
+        private const int KeySize = 32;    // AES ключ має бути 256 біт (32 байти)
+        private const int IVSize = 16;     // AES IV має бути 128 біт (16 байтів)
+        private const int BufferSize = 1024; // Буфер для зчитування файлу
+
         private BackgroundWorker worker;
         private Stopwatch stopwatch;
         private string selectedFilePath;
@@ -81,7 +85,7 @@ namespace FileEncryptorApp
         {
             string key = string.Empty;
             keyTextBox.Dispatcher.Invoke(() => key = keyTextBox.Text);
-            return key.PadRight(32);
+            return key.PadRight(KeySize);
         }
 
         private (Aes, ICryptoTransform) PrepareEncryption()
@@ -89,7 +93,7 @@ namespace FileEncryptorApp
             Aes aes = Aes.Create();
             byte[] keyBytes = Encoding.UTF8.GetBytes(GetEncryptionKey());
             aes.Key = keyBytes;
-            aes.IV = keyBytes.Take(16).ToArray();
+            aes.IV = keyBytes.Take(IVSize).ToArray();
 
             ICryptoTransform cryptoTransform = isEncryptionMode ? aes.CreateEncryptor() : aes.CreateDecryptor();
             return (aes, cryptoTransform);
@@ -101,7 +105,7 @@ namespace FileEncryptorApp
             using (FileStream outputStream = new FileStream(tempFilePath, FileMode.Create, FileAccess.Write))
             using (CryptoStream cryptoStream = new CryptoStream(outputStream, cryptoTransform, CryptoStreamMode.Write))
             {
-                byte[] buffer = new byte[1024];
+                byte[] buffer = new byte[BufferSize];
                 long totalBytes = inputStream.Length, totalRead = 0;
                 int bytesRead;
 
