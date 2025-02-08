@@ -1,0 +1,19 @@
+﻿<Window x:Class="FileEncryptorApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="File Encryptor" Height="350" Width="600">
+    <Grid>
+        <TextBlock Text="Encryption Key:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+        <TextBox x:Name="keyTextBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="110,10,0,0"/>
+
+        <Button Content="Select File" Width="100" Margin="51,40,449,253" Click="SelectFile_Click"/>
+        <Button Content="Encrypt" Width="100" Margin="417,39,83,253" Click="Encrypt_Click"/>
+        <Button Content="Decrypt" Width="100" Margin="250,40,250,253" Click="Decrypt_Click"/>
+
+        <ProgressBar x:Name="progressBar" Height="20" VerticalAlignment="Top" Margin="10,100,10,0"/>
+
+        <TextBlock x:Name="statusTextBlock" HorizontalAlignment="Left" Margin="10,150,0,0" Text="Status: Idle"/>
+
+        <TextBlock x:Name="timeTextBlock" HorizontalAlignment="Left" Margin="10,180,0,0" Text="Time: 0s"/>
+    </Grid>
+</Window>

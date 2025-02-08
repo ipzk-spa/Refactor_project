@@ -1,0 +1,54 @@
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]ist/
+[Dd]istPublish/
+[Dd]ebugTest/
+[Dd]ebugTestPublic/
+[Dd]ebugTemp/
+[Dd]ebugTests/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer files (32-bit)
+x86/
+
+# Windows Installer files (64-bit)
+x64/
+
+# Windows Installer files (Any CPU)
+AnyCPU/
+
+# User-specific files for Visual Studio for Mac
+.vscode/
+
+# Windows image file
+Thumbs.db
+
+# JetBrains Rider specific files
+.idea/
+
+# ReSharper files
+_ReSharper/
+*.[Rr]eSharper*
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# NPM packages
+node_modules/
+
+
+# Build directories
+bin/
+obj/

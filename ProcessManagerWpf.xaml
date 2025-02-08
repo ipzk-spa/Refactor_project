@@ -1,0 +1,10 @@
+﻿<Window x:Class="TaskManagerWpf.ProcessManagerWpf"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Детальний менеджер процесів" Height="400" Width="600">
+    <Grid>
+        <DataGrid Name="ProcessesDataGrid" AutoGenerateColumns="True" Margin="10,10,10,60" />
+        <Button Content="Оновити" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,0,0,10" Click="RefreshButton_Click" />
+        <Button Content="Завершити процес" Width="150" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Click="KillProcessButton_Click" />
+    </Grid>
+</Window>

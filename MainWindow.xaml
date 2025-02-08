@@ -1,0 +1,64 @@
+﻿<Window x:Class="TaskManagerWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Task Manager" Height="500" Width="800">
+    <Grid>
+        <!-- Визначаємо пропорційні рядки -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <!-- DataGrid займає весь простір -->
+            <RowDefinition Height="Auto" />
+            <!-- Нижня панель кнопок -->
+        </Grid.RowDefinitions>
+
+        <!-- Визначаємо пропорційні стовпці -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <!-- Кнопки зліва -->
+            <ColumnDefinition Width="*" />
+            <!-- Порожній простір -->
+            <ColumnDefinition Width="Auto" />
+            <!-- Кнопки справа -->
+        </Grid.ColumnDefinitions>
+
+        <!-- DataGrid -->
+        <DataGrid x:Name="processesDataGrid" 
+                  AutoGenerateColumns="True" 
+                  SelectionChanged="processesDataGrid_SelectionChanged" 
+                  Grid.Row="0" Grid.ColumnSpan="3"
+                  Margin="10"/>
+
+        <!-- Нижня панель зліва -->
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" Margin="10">
+            <ComboBox x:Name="priorityComboBox" 
+          Width="150" Height="30" 
+          SelectionChanged="priorityComboBox_SelectionChanged" 
+          IsEnabled="False" 
+          SelectedValuePath="Content">
+                <ComboBoxItem Content="Idle" />
+                <ComboBoxItem Content="BelowNormal" />
+                <ComboBoxItem Content="Normal" />
+                <ComboBoxItem Content="AboveNormal" />
+                <ComboBoxItem Content="High" />
+                <ComboBoxItem Content="RealTime" />
+            </ComboBox>
+            <Button Content="Refresh" Width="150" Height="30" Margin="0,10,0,0" Click="RefreshButton_Click"/>
+            <Button Content="Видалити процес" Width="150" Height="30" Margin="0,10,0,0" Click="TerminateButton_Click"/>
+        </StackPanel>
+
+        <!-- Нижня панель справа -->
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,10">
+                <Button Content="Шифратор/Дешифратор" Width="200" Height="30" Margin="0,0,10,0" Click="OpenEncryptor_Click"/>
+                <Button Content="Calculator" Width="100" Height="30" Margin="0,0,10,0" Click="LaunchCalculator"/>
+                <Button Content="Word" Width="100" Height="30" Margin="0,0,10,0" Click="LaunchWord"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="PyCharm" Width="100" Height="30" Margin="0,0,10,0" Click="LaunchPyCharm"/>
+                <Button Content="Steam" Width="100" Height="30" Margin="0,0,10,0" Click="LaunchSteam"/>
+                <Button Content="Excel" Width="150" Height="30" Margin="0"/>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>
